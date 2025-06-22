@@ -1,0 +1,570 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>🚨 ÚLTIMA CHANCE - Oferta Expira em Minutos</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            line-height: 1.6;
+            color: #cccccc;
+            background: #000000;
+            overflow-x: hidden;
+        }
+
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Hero Section */
+        .hero {
+            background: 
+                radial-gradient(circle at center, #0d0d0d 0%, #000000 70%),
+                linear-gradient(135deg, rgba(139,0,0,0.1) 0%, transparent 30%, rgba(139,0,0,0.05) 70%, #000000 100%);
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: 
+                url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="cracks" width="50" height="50" patternUnits="userSpaceOnUse"><path d="M25 0 L30 25 L50 20 L35 35 L25 50 L15 35 L0 20 L20 25 Z" stroke="rgba(139,0,0,0.08)" stroke-width="0.5" fill="none"/></pattern></defs><rect width="100" height="100" fill="url(%23cracks)"/></svg>');
+            animation: fade 8s ease-in-out infinite alternate;
+            opacity: 0.3;
+        }
+
+        @keyframes fade {
+            0% { opacity: 0.1; }
+            100% { opacity: 0.3; }
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 2;
+            color: #cccccc;
+            text-align: center;
+            width: 100%;
+        }
+
+        .warning-badge {
+            background: linear-gradient(45deg, #8b0000, #4d0000);
+            color: #ff6666;
+            padding: 12px 30px;
+            border-radius: 30px;
+            font-size: 0.95rem;
+            font-weight: 700;
+            display: inline-block;
+            margin-bottom: 25px;
+            border: 2px solid rgba(139, 0, 0, 0.6);
+            box-shadow: 
+                0 0 30px rgba(139, 0, 0, 0.4),
+                inset 0 1px 0 rgba(255, 102, 102, 0.2);
+            animation: pulse 2s ease-in-out infinite alternate;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+        }
+
+        @keyframes pulse {
+            0% { 
+                box-shadow: 0 0 30px rgba(139, 0, 0, 0.4), inset 0 1px 0 rgba(255, 102, 102, 0.2);
+                transform: scale(1);
+            }
+            100% { 
+                box-shadow: 0 0 50px rgba(139, 0, 0, 0.8), inset 0 1px 0 rgba(255, 102, 102, 0.4);
+                transform: scale(1.05);
+            }
+        }
+
+        .hero h1 {
+            font-size: clamp(2.2rem, 5vw, 3.8rem);
+            font-weight: 900;
+            margin-bottom: 1.5rem;
+            text-shadow: 3px 3px 15px rgba(0,0,0,0.9);
+            color: #ff4444;
+            line-height: 1.1;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+
+        .hero-subtitle {
+            font-size: clamp(1.1rem, 2.5vw, 1.4rem);
+            margin-bottom: 2rem;
+            opacity: 0.85;
+            line-height: 1.4;
+            color: #999999;
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
+            font-style: italic;
+        }
+
+        .rejected-message {
+            background: 
+                linear-gradient(145deg, rgba(139,0,0,0.1), rgba(0,0,0,0.8));
+            border: 1px solid rgba(139, 0, 0, 0.3);
+            border-radius: 15px;
+            padding: 25px;
+            margin: 30px 0;
+            text-align: center;
+            color: #ff6666;
+            font-size: 1.1rem;
+            line-height: 1.5;
+        }
+
+        .countdown-section {
+            background: 
+                radial-gradient(circle, rgba(139,0,0,0.2) 0%, rgba(0,0,0,0.9) 70%);
+            border: 2px solid #8b0000;
+            border-radius: 20px;
+            padding: 30px;
+            margin: 40px 0;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .countdown-section::before {
+            content: '';
+            position: absolute;
+            top: -2px;
+            left: -2px;
+            right: -2px;
+            bottom: -2px;
+            background: linear-gradient(45deg, #8b0000, transparent, #8b0000);
+            border-radius: 20px;
+            z-index: -1;
+            animation: border-glow 3s ease-in-out infinite alternate;
+        }
+
+        @keyframes border-glow {
+            0% { opacity: 0.5; }
+            100% { opacity: 1; }
+        }
+
+        .countdown-title {
+            color: #ff4444;
+            font-size: 1.3rem;
+            font-weight: 800;
+            margin-bottom: 20px;
+            text-transform: uppercase;
+        }
+
+        .timer-display {
+            font-size: 3.5rem;
+            font-weight: 900;
+            color: #ff0000;
+            margin: 20px 0;
+            font-family: 'Courier New', monospace;
+            text-shadow: 
+                0 0 20px rgba(255,0,0,0.8),
+                0 0 40px rgba(255,0,0,0.4);
+            animation: flicker 1s ease-in-out infinite alternate;
+        }
+
+        @keyframes flicker {
+            0% { opacity: 0.8; }
+            100% { opacity: 1; }
+        }
+
+        .books-final {
+            background: 
+                linear-gradient(145deg, rgba(10,10,10,0.95), rgba(25,0,0,0.6));
+            border-radius: 25px;
+            padding: 40px;
+            margin: 40px 0;
+            border: 1px solid rgba(139, 0, 0, 0.2);
+            position: relative;
+        }
+
+        .books-final::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: 
+                radial-gradient(circle at 30% 70%, rgba(139,0,0,0.05) 0%, transparent 50%);
+            border-radius: 25px;
+        }
+
+        .books-title {
+            text-align: center;
+            font-size: 1.8rem;
+            font-weight: 800;
+            color: #ff4444;
+            margin-bottom: 30px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .books-list {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 25px;
+            margin: 30px 0;
+        }
+
+        .book-final {
+            background: rgba(0,0,0,0.6);
+            border: 1px solid rgba(139,0,0,0.2);
+            border-radius: 15px;
+            padding: 25px;
+            text-align: center;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .book-final::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(139,0,0,0.1), transparent);
+            transition: left 0.6s ease;
+        }
+
+        .book-final:hover::before {
+            left: 100%;
+        }
+
+        .book-final:hover {
+            border-color: rgba(139,0,0,0.5);
+            transform: translateY(-5px);
+        }
+
+        .book-emoji-final {
+            font-size: 2.5rem;
+            margin-bottom: 15px;
+            display: block;
+            filter: grayscale(20%) brightness(0.9);
+        }
+
+        .book-title-final {
+            font-size: 1.1rem;
+            font-weight: 700;
+            color: #ff6666;
+            margin-bottom: 10px;
+            text-transform: uppercase;
+        }
+
+        .price-final {
+            background: 
+                radial-gradient(circle, rgba(139,0,0,0.15) 0%, rgba(0,0,0,0.9) 70%);
+            border-radius: 25px;
+            padding: 40px;
+            margin: 40px 0;
+            text-align: center;
+            border: 2px solid rgba(139, 0, 0, 0.3);
+            position: relative;
+        }
+
+        .price-old-final {
+            font-size: 1.8rem;
+            text-decoration: line-through;
+            opacity: 0.5;
+            margin-bottom: 15px;
+            color: #666;
+        }
+
+        .price-new-final {
+            font-size: 4rem;
+            font-weight: 900;
+            color: #ff4444;
+            margin-bottom: 20px;
+            text-shadow: 
+                2px 2px 10px rgba(0,0,0,0.8),
+                0 0 30px rgba(255,68,68,0.4);
+        }
+
+        .desperation-text {
+            font-size: 1.2rem;
+            color: #ff6666;
+            margin: 20px 0;
+            font-style: italic;
+            font-weight: 600;
+        }
+
+        .cta-final {
+            background: 
+                linear-gradient(45deg, #8b0000, #4d0000, #8b0000),
+                radial-gradient(circle, rgba(255,0,0,0.2) 0%, transparent 70%);
+            background-size: 200% 200%, 100% 100%;
+            color: #ffffff;
+            padding: 25px 55px;
+            font-size: 1.4rem;
+            font-weight: 800;
+            border: none;
+            border-radius: 50px;
+            cursor: pointer;
+            text-decoration: none;
+            display: inline-block;
+            margin: 25px 0;
+            transition: all 0.4s ease;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            box-shadow: 
+                0 10px 40px rgba(139,0,0,0.4),
+                inset 0 1px 0 rgba(255,255,255,0.1),
+                0 0 30px rgba(255,0,0,0.3);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .cta-final::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+            transition: left 0.6s ease;
+        }
+
+        .cta-final:hover::before {
+            left: 100%;
+        }
+
+        .cta-final:hover {
+            transform: translateY(-5px);
+            background-position: 100% 0;
+            box-shadow: 
+                0 15px 50px rgba(139,0,0,0.7),
+                inset 0 1px 0 rgba(255,255,255,0.2),
+                0 0 50px rgba(255,0,0,0.6);
+        }
+
+        .reject-button {
+            background: transparent;
+            color: #666;
+            padding: 15px 35px;
+            font-size: 1rem;
+            font-weight: 500;
+            border: 1px solid rgba(102,102,102,0.3);
+            border-radius: 30px;
+            cursor: pointer;
+            text-decoration: none;
+            display: inline-block;
+            margin: 15px 0;
+            transition: all 0.3s ease;
+            letter-spacing: 1px;
+            opacity: 0.7;
+        }
+
+        .reject-button:hover {
+            color: #999;
+            border-color: rgba(153,153,153,0.5);
+            opacity: 1;
+        }
+
+        .final-warning {
+            background: rgba(139,0,0,0.05);
+            border: 1px solid rgba(139,0,0,0.3);
+            border-radius: 15px;
+            padding: 25px;
+            margin: 35px 0;
+            text-align: center;
+            color: #ff6666;
+            font-style: italic;
+            line-height: 1.6;
+        }
+
+        .guarantee-final {
+            background: rgba(0,0,0,0.8);
+            border-radius: 20px;
+            padding: 25px;
+            margin: 30px 0;
+            border-left: 4px solid #8b0000;
+            border-right: 4px solid #4d0000;
+        }
+
+        @media (max-width: 768px) {
+            .books-list {
+                grid-template-columns: 1fr;
+                gap: 20px;
+            }
+            
+            .timer-display {
+                font-size: 2.8rem;
+            }
+            
+            .price-new-final {
+                font-size: 3.2rem;
+            }
+            
+            .cta-final {
+                padding: 22px 45px;
+                font-size: 1.2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <section class="hero">
+        <div class="container">
+            <div class="hero-content">
+                <div class="warning-badge">🚨 ÚLTIMA CHANCE</div>
+                
+                <h1>Última Chance de Poder</h1>
+                
+                <p class="hero-subtitle">
+                    Você recusou a primeira oferta... mas o destino conspira a seu favor<br>
+                    <strong>Esta é sua derradeira oportunidade de escapar da mediocridade</strong>
+                </p>
+
+                <div class="rejected-message">
+                    <p><strong>🕷️ Você hesitou quando o poder te chamou...</strong></p>
+                    <p>Mas as forças ocultas sussurram uma última chance antes das trevas eternas.</p>
+                </div>
+
+                <div class="countdown-section">
+                    <div class="countdown-title">⏰ ÚLTIMA CHANCE EXPIRA EM:</div>
+                    <div class="timer-display" id="countdown">10:00</div>
+                    <p style="color: #ff6666; font-weight: 600;">Depois disso, você retorna ao vazio da insignificância</p>
+                </div>
+
+                <div class="books-final">
+                    <div class="books-title">🔥 Os 3 Manuais do Poder Supremo</div>
+                    
+                    <div class="books-list">
+                        <div class="book-final">
+                            <span class="book-emoji-final">👿</span>
+                            <div class="book-title-final">Mais Esperto que o Diabo</div>
+                            <p style="font-size: 0.9rem; opacity: 0.8; color: #ccc;">As 7 armas mentais secretas que CEOs e milionários usam para dominar qualquer negociação e manipular decisões a seu favor</p>
+                        </div>
+                        
+                        <div class="book-final">
+                            <span class="book-emoji-final">⚔️</span>
+                            <div class="book-title-final">33 Estratégias de Guerra</div>
+                            <p style="font-size: 0.9rem; opacity: 0.8; color: #ccc;">Táticas militares ancestrais adaptadas para destruir concorrentes, conquistar clientes e aniquilar obstáculos no mundo dos negócios</p>
+                        </div>
+                        
+                        <div class="book-final">
+                            <span class="book-emoji-final">💔</span>
+                            <div class="book-title-final">A Arte da Sedução</div>
+                            <p style="font-size: 0.9rem; opacity: 0.8; color: #ccc;">48 técnicas psicológicas de influência irresistível para fazer qualquer pessoa dizer "SIM" aos seus pedidos sem ela perceber</p>
+                        </div>
+                    </div>
+
+                    <div style="text-align: center; margin-top: 30px; color: #ff6666; font-size: 1.1rem; font-style: italic;">
+                        "O mesmo arsenal devastador que transformou pessoas comuns em líderes implacáveis... por uma fração do preço"
+                    </div>
+                </div>
+
+                <div class="price-final">
+                    <div class="price-old-final">De R$ 29,90</div>
+                    <div class="price-new-final">R$ 19,90</div>
+                    <div class="desperation-text">
+                        💀 Preço de liquidação final - 33% OFF
+                    </div>
+                    
+                    <a href="https://pay.cakto.com.br/mo7p9in" class="cta-final">
+                        ⚡ SIM, EU QUERO ESTE PODER
+                    </a>
+                    
+                    <br>
+                    
+                    <a href="https://dxxdu09.github.io/Combo-Maquiavelico/" class="reject-button">
+                        Não, prefiro ser um peão no tabuleiro...
+                    </a>
+                    
+                    <div style="font-size: 0.9rem; opacity: 0.6; margin-top: 15px; color: #777;">
+                        💳 Parcelamos em até 4x no cartão
+                    </div>
+                </div>
+
+                <div class="final-warning">
+                    <h4 style="color: #ff4444; margin-bottom: 15px;">🚨 ALERTA FINAL</h4>
+                    <p>Se você sair desta página agora, <strong>jamais</strong> terá outra chance. Os fracos voltam ao ponto de partida. Os fortes aproveitam a última oportunidade.</p>
+                </div>
+
+                <div class="guarantee-final">
+                    <h4 style="color: #ff4444; margin-bottom: 15px;">🛡️ GARANTIA BLINDADA - 7 DIAS</h4>
+                    <p style="color: #ccc;">Mesmo sendo sua última chance, oferecemos 7 dias de garantia total. Se estes segredos não transformarem sua realidade, devolvemos 100% do seu dinheiro. Sem pegadinhas.</p>
+                </div>
+
+                <a href="https://pay.cakto.com.br/mo7p9in" class="cta-final" style="margin-top: 35px;">
+                    🕷️ ACEITAR ESTA ÚLTIMA OFERTA
+                </a>
+
+                <div style="margin-top: 30px; opacity: 0.5; font-size: 0.8rem; color: #555; text-align: center;">
+                    🔒 Compra 100% segura e criptografada
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <script>
+        // 10-minute countdown timer
+        let minutes = 9;
+        let seconds = 59;
+        
+        function updateTimer() {
+            const display = document.getElementById('countdown');
+            display.textContent = `${minutes.toString().padStart(2, '0')}:${seconds.toString().padStart(2, '0')}`;
+            
+            // Change color as time runs out
+            if (minutes <= 2) {
+                display.style.color = "#ff0000";
+                display.style.animation = "flicker 0.5s ease-in-out infinite alternate";
+            }
+            
+            if (seconds === 0) {
+                if (minutes === 0) {
+                    display.textContent = "EXPIROU";
+                    display.style.color = "#660000";
+                    display.style.fontSize = "2.5rem";
+                    // Disable buttons
+                    document.querySelectorAll('.cta-final').forEach(btn => {
+                        btn.style.opacity = "0.3";
+                        btn.style.pointerEvents = "none";
+                        btn.textContent = "OPORTUNIDADE PERDIDA";
+                    });
+                    return;
+                }
+                minutes--;
+                seconds = 59;
+            } else {
+                seconds--;
+            }
+        }
+        
+        // Update every second
+        setInterval(updateTimer, 1000);
+
+        // Add desperate atmosphere with subtle screen effects
+        let intensity = 0;
+        setInterval(() => {
+            intensity = Math.sin(Date.now() * 0.002) * 0.02 + 0.98;
+            document.body.style.filter = `brightness(${intensity})`;
+        }, 50);
+
+        // Flashing warning effect
+        setInterval(() => {
+            const badge = document.querySelector('.warning-badge');
+            badge.style.transform = `scale(${1 + Math.sin(Date.now() * 0.008) * 0.05})`;
+        }, 100);
+    </script>
+</body>
+</html>
